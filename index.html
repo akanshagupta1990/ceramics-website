@@ -23,6 +23,30 @@
     <script>
       const gallery = document.getElementById("gallery");
 
+      function whenImageReady(img) {
+        if (img.complete) return Promise.resolve();
+        return new Promise((resolve) => {
+          img.addEventListener("load", resolve, { once: true });
+          img.addEventListener("error", resolve, { once: true });
+        });
+      }
+
+      function initMediaLoading(media, images) {
+        if (!images.length) return;
+
+        media.classList.add("product__media--loading");
+
+        const shimmer = document.createElement("div");
+        shimmer.className = "product__shimmer";
+        shimmer.setAttribute("aria-hidden", "true");
+        media.prepend(shimmer);
+
+        whenImageReady(images[0]).then(() => {
+          media.classList.remove("product__media--loading");
+          media.classList.add("product__media--loaded");
+        });
+      }
+
       function createProduct(product) {
         const item = document.createElement("li");
         item.className = "grid__item";
@@ -33,12 +57,15 @@
         const media = document.createElement("div");
         media.className = "product__media";
 
+        const images = [];
+
         const primary = document.createElement("img");
         primary.src = product.primary;
         primary.alt = "";
         primary.loading = product.featured ? "eager" : "lazy";
         primary.decoding = "async";
         media.appendChild(primary);
+        images.push(primary);
 
         if (product.secondary) {
           figure.classList.add("product--dual");
@@ -48,6 +75,7 @@
           secondary.loading = "lazy";
           secondary.decoding = "async";
           media.appendChild(secondary);
+          images.push(secondary);
         }
 
         if (product.reserved) {
@@ -56,6 +84,8 @@
           badge.textContent = "reserved";
           media.appendChild(badge);
         }
+
+        initMediaLoading(media, images);
 
         figure.appendChild(media);
         item.appendChild(figure);
