@@ -34,7 +34,7 @@ const collections = [
       { primary: "Photos/W_IMG_1757.jpeg" },
       { primary: "Photos/W_IMG_1782.jpeg" },
       { primary: "Photos/W_IMG_1802.jpeg" },
-      { primary: "Photos/W_IMG_1736.jpeg" },
+      { primary: "Photos/W_IMG_1736.jpeg", reserved: true },
       { primary: "Photos/W_IMG_1760.jpeg" },
       { primary: "Photos/W_IMG_1769.jpeg", reserved: true },
       {
