@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spring & Winter 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="gallery" id="gallery"></main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Akansha Gupta</p>
+    </footer>
+
+    <script src="products.js"></script>
+    <script>
+      const gallery = document.getElementById("gallery");
+
+      function createProduct(product) {
+        const item = document.createElement("li");
+        item.className = "grid__item";
+
+        const figure = document.createElement("figure");
+        figure.className = "product";
+
+        const media = document.createElement("div");
+        media.className = "product__media";
+
+        const primary = document.createElement("img");
+        primary.src = product.primary;
+        primary.alt = "";
+        primary.loading = product.featured ? "eager" : "lazy";
+        primary.decoding = "async";
+        media.appendChild(primary);
+
+        if (product.secondary) {
+          figure.classList.add("product--dual");
+          const secondary = document.createElement("img");
+          secondary.src = product.secondary;
+          secondary.alt = "";
+          secondary.loading = "lazy";
+          secondary.decoding = "async";
+          media.appendChild(secondary);
+        }
+
+        figure.appendChild(media);
+        item.appendChild(figure);
+        return item;
+      }
+
+      function createHero(hero) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "collection__hero";
+
+        const main = document.createElement("ul");
+        main.className = "hero__main";
+        main.appendChild(createProduct(hero.main));
+
+        const stack = document.createElement("ul");
+        stack.className = "hero__stack";
+        hero.stack.forEach((product) => {
+          stack.appendChild(createProduct(product));
+        });
+
+        wrapper.appendChild(main);
+        wrapper.appendChild(stack);
+        return wrapper;
+      }
+
+      collections.forEach((collection) => {
+        const section = document.createElement("section");
+        section.className = "collection";
+
+        const title = document.createElement("h2");
+        title.className = "collection__title";
+        title.textContent = collection.label;
+
+        section.appendChild(title);
+
+        if (collection.hero) {
+          section.appendChild(createHero(collection.hero));
+        }
+
+        const grid = document.createElement("ul");
+        grid.className = "grid";
+
+        collection.products.forEach((product) => {
+          grid.appendChild(createProduct(product));
+        });
+
+        section.appendChild(grid);
+        gallery.appendChild(section);
+      });
+    </script>
+  </body>
+</html>
