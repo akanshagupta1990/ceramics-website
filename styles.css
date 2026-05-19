@@ -151,11 +151,13 @@ body {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .product--dual:hover .product__media img:last-child {
+  .grid .product--dual:hover .product__media img:last-child,
+  .hero__stack .product--dual:hover .product__media img:last-child {
     opacity: 1;
   }
 
-  .product--dual:hover .product__media img:first-child {
+  .grid .product--dual:hover .product__media img:first-child,
+  .hero__stack .product--dual:hover .product__media img:first-child {
     opacity: 0;
   }
 }
@@ -209,7 +211,8 @@ body {
     transition: none;
   }
 
-  .product--dual:hover .product__media img:first-child {
+  .grid .product--dual:hover .product__media img:first-child,
+  .hero__stack .product--dual:hover .product__media img:first-child {
     transition: none;
   }
 }
