@@ -162,17 +162,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .collection__hero {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 480px) {
+@media (max-width: 779px) {
   .grid {
     grid-template-columns: 1fr;
   }
