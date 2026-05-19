@@ -50,6 +50,13 @@
           media.appendChild(secondary);
         }
 
+        if (product.reserved) {
+          const badge = document.createElement("span");
+          badge.className = "product__badge";
+          badge.textContent = "reserved";
+          media.appendChild(badge);
+        }
+
         figure.appendChild(media);
         item.appendChild(figure);
         return item;

@@ -4,25 +4,27 @@ const collections = [
     hero: {
       main: {
         primary: "Photos/S_IMG_1790.jpeg",
-        secondary: "Photos/S_IMG_1794.jpeg",
         featured: true,
+        reserved: true,
       },
       stack: [
         {
           primary: "Photos/S_IMG_1764.jpeg",
           secondary: "Photos/S_IMG_1770.jpeg",
+          reserved: true,
         },
-        { primary: "Photos/S_IMG_1803.jpeg" },
+        { primary: "Photos/S_IMG_1803.jpeg", reserved: true },
       ],
     },
     products: [
-      { primary: "Photos/S_IMG_1750.jpeg" },
+      { primary: "Photos/S_IMG_1750.jpeg", reserved: true },
       { primary: "Photos/S_IMG_1788.jpeg" },
       { primary: "Photos/S_IMG_1801.jpeg" },
       { primary: "Photos/S_IMG_1807.jpeg" },
       {
         primary: "Photos/S_IMG_1745.jpeg",
         secondary: "Photos/S_IMG_1744.jpeg",
+        reserved: true,
       },
     ],
   },
